@@ -1,0 +1,29 @@
+# Job que corre DENTRO del cluster (RDS no es publica): carga SQL y crea el usuario de la app con minimo privilegio
+apiVersion: batch/v1
+kind: Job
+metadata:
+  name: db-init
+  namespace: ${NAMESPACE}
+spec:
+  backoffLimit: 3
+  template:
+    spec:
+      restartPolicy: Never
+      containers:
+      - name: mysql
+        image: mysql:8.0
+        envFrom:
+        - secretRef: { name: db-bootstrap }
+        command: ["/bin/sh", "-c"]
+        args:
+        - |
+          set -e
+          export MYSQL_PWD="$ADMIN_PASS"
+          for f in /sql/*.sql; do echo "-> $f"; mysql -h "$DB_HOST" -u "$ADMIN_USER" "$DB_NAME" < "$f"; done
+          mysql -h "$DB_HOST" -u "$ADMIN_USER" -e "CREATE USER IF NOT EXISTS '${APP_USER}'@'%' IDENTIFIED BY '${APP_PASS}'; ALTER USER '${APP_USER}'@'%' IDENTIFIED BY '${APP_PASS}'; GRANT SELECT,INSERT,UPDATE,DELETE ON \`${DB_NAME}\`.* TO '${APP_USER}'@'%'; FLUSH PRIVILEGES;"
+          mysql -h "$DB_HOST" -u "$ADMIN_USER" -e "SELECT COUNT(*) AS productos FROM ${DB_NAME}.productos; SHOW TABLES FROM ${DB_NAME};"
+        volumeMounts:
+        - { name: sql, mountPath: /sql }
+      volumes:
+      - name: sql
+        configMap: { name: db-sql }

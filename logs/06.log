@@ -1,0 +1,24 @@
+  [1;32m[ok][0m Login ECR
+[1;34m[23:59:38][0m Emulacion arm64 (CloudShell es x86)
+[1;34m[23:59:40][0m freshbox-get-products
+#10 naming to 334767299218.dkr.ecr.us-east-1.amazonaws.com/freshbox-get-products:latest done
+#10 DONE 0.8s
+latest: digest: sha256:dd3cd4885e87275e067e0da3ebb81a723cc353689ede94b4ac8ebe34be4ba67f size: 1782
+  [1;32m[ok][0m get-products publicado
+[1;34m[00:00:01][0m freshbox-create-product
+#9 naming to 334767299218.dkr.ecr.us-east-1.amazonaws.com/freshbox-create-product:latest done
+#9 DONE 0.6s
+latest: digest: sha256:39b903734a8cb1f3dc502b5c3b1c283d78b76d4a261cdf6b2b4d4c3a5ea916b2 size: 1782
+  [1;32m[ok][0m create-product publicado
+[1;34m[00:00:16][0m freshbox-update-product
+#9 naming to 334767299218.dkr.ecr.us-east-1.amazonaws.com/freshbox-update-product:latest done
+#9 DONE 0.6s
+latest: digest: sha256:5b9d9886e63d49cce9e559c1780e4fdab40096a85340c6103fd66383859f65f5 size: 1782
+  [1;32m[ok][0m update-product publicado
+[1;34m[00:00:30][0m freshbox-delete-product
+#9 naming to 334767299218.dkr.ecr.us-east-1.amazonaws.com/freshbox-delete-product:latest done
+#9 DONE 0.6s
+latest: digest: sha256:480cdb300bd9a8899d1b777ebef46ec8eccd94fe41ba8cf1f40508cadb7f087c size: 1782
+  [1;32m[ok][0m delete-product publicado
+[1;34m[00:00:44][0m Imagenes listas
+freshbox-create-product	freshbox-delete-product	freshbox-get-products	freshbox-update-product

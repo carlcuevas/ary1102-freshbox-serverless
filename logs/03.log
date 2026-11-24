@@ -1,0 +1,10 @@
+[1;34m[23:08:42][0m Cluster freshbox-cluster (k8s 1.34)
+[1;34m[23:08:43][0m Esperando cluster ACTIVE (~10 min)
+  [1;32m[ok][0m Cluster activo, kubeconfig listo, cluster SG sg-04569b3eed7c534b9
+[1;34m[23:08:46][0m Launch template (EBS gp3 cifrado, IMDSv2 con hop limit 2 para los controllers, SG-EKS + SG del cluster)
+  [1;32m[ok][0m freshbox-ng-lt
+[1;34m[23:08:47][0m Node group freshbox-ng (t4g.small x 2-4, subredes app)
+[1;34m[23:08:48][0m Esperando nodos (~5 min)
+NAME                         STATUS   ROLES    AGE   VERSION                ZONE         INSTANCE-TYPE
+ip-10-0-0-165.ec2.internal   Ready    <none>   81m   v1.34.12-eks-9adbfea   us-east-1a   t4g.small
+ip-10-0-0-249.ec2.internal   Ready    <none>   81m   v1.34.12-eks-9adbfea   us-east-1b   t4g.small

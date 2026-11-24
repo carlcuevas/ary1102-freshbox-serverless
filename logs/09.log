@@ -1,0 +1,10 @@
+[1;34m[00:11:31][0m Empaquetando (Cart y Create-Order usan el SDK v3 incluido en el runtime; Process-Order lleva mysql2)
+  [1;32m[ok][0m cart.zip (4.0K)
+  [1;32m[ok][0m create-order.zip (4.0K)
+  [1;32m[ok][0m process-order.zip (1.1M)
+[1;34m[00:11:33][0m Funciones
+  [1;32m[ok][0m freshbox-cart
+  [1;32m[ok][0m freshbox-create-order
+  [1;32m[ok][0m freshbox-process-order
+[1;34m[00:15:34][0m Trigger SQS -> Process-Order (lote 5, fallos parciales, concurrencia maxima 5 para cuidar las conexiones a MySQL)
+  [1;32m[ok][0m Trigger SQS configurado

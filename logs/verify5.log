@@ -1,0 +1,42 @@
+[1;34m[05:05:42][0m Contenedores (EKS)
+  [1;32m[ok][0m deployment get-products disponible
+  [1;32m[ok][0m hpa get-products-hpa
+  [1;32m[ok][0m deployment create-product disponible
+  [1;32m[ok][0m hpa create-product-hpa
+  [1;32m[ok][0m deployment update-product disponible
+  [1;32m[ok][0m hpa update-product-hpa
+  [1;32m[ok][0m deployment delete-product disponible
+  [1;32m[ok][0m hpa delete-product-hpa
+  [1;32m[ok][0m sin pod frontend (el sitio vive en S3)
+  [1;32m[ok][0m targets del ALB healthy
+[1;34m[05:05:56][0m Serverless
+  [1;32m[ok][0m DynamoDB TTL habilitado
+  [1;32m[ok][0m VPC Endpoint DynamoDB disponible
+  [1;32m[ok][0m SQS + DLQ
+  [1;32m[ok][0m freshbox-cart Active (nodejs20.x)
+  [1;32m[ok][0m freshbox-create-order Active (nodejs20.x)
+  [1;32m[ok][0m freshbox-process-order Active (nodejs20.x)
+  [1;32m[ok][0m Process-Order dentro de la VPC (subredes app)
+  [1;32m[ok][0m trigger SQS habilitado
+  [1;32m[ok][0m API Gateway stage prod
+  [1;32m[ok][0m S3 sitio estatico responde 200
+[1;34m[05:06:10][0m CRUD de productos (API GW -> ALB -> EKS -> MySQL)
+  [1;32m[ok][0m GET /api/products = 200
+  [1;32m[ok][0m POST /api/products = 201
+  [1;32m[ok][0m PUT /api/products/11 = 200
+  [1;32m[ok][0m DELETE /api/products/11 = 200
+  [1;32m[ok][0m DELETE repetido = 404
+[1;34m[05:06:11][0m Carrito y ordenes (Lambda -> DynamoDB -> SQS -> Lambda -> MySQL)
+  [1;32m[ok][0m carrito: dato invalido = 400
+  [1;32m[ok][0m orden con carrito vacio = 400
+  [1;32m[ok][0m carrito acumula cantidades y calcula total (8970)
+  [1;32m[ok][0m DELETE /api/cart/2 = 200
+  [1;32m[ok][0m POST /api/orders = 200 (recibido)
+  orden: ORD-217c3bdb-f6aa-4ca8-8f20-285156ae1b18 total=6980
+  [1;32m[ok][0m orden procesada de forma asincrona (estado=procesado)
+  [1;32m[ok][0m mensaje al cliente 'Su pedido fue procesado'
+  [1;32m[ok][0m carrito vaciado tras procesar
+  [1;32m[ok][0m orden registrada en RDS MySQL (1 fila)
+  [1;32m[ok][0m DLQ vacia
+
+[1;32mTODO OK[0m

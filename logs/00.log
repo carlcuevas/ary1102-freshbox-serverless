@@ -1,0 +1,14 @@
+[1;34m[14:34:22][0m Herramientas
+  [1;32m[ok][0m aws
+  [1;32m[ok][0m jq
+  [1;32m[ok][0m openssl
+  [1;32m[ok][0m curl
+  [1;32m[ok][0m envsubst
+  [1;32m[ok][0m kubectl v1.36.2-eks-8f14419
+  [1;32m[ok][0m helm v3.22.1+gd6c1a0e
+  [1;32m[ok][0m docker (necesario desde el paso de imagenes)
+[1;34m[14:34:25][0m Cuenta AWS
+  [1;32m[ok][0m Cuenta 334767299218, region us-east-1
+  [1;32m[ok][0m LabRole: arn:aws:iam::334767299218:role/LabRole
+  [1;32m[ok][0m 6 zonas de disponibilidad
+[1;34m[14:34:29][0m Preflight OK

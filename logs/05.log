@@ -1,0 +1,12 @@
+[1;34m[23:21:23][0m Esperando RDS disponible (Multi-AZ puede tardar hasta ~20 min en total)
+  [1;32m[ok][0m Endpoint: freshbox-rds.cnyjxe4u8337.us-east-1.rds.amazonaws.com
+job.batch/db-init created
+job.batch/db-init condition met
+-> /sql/10-productos.sql
+-> /sql/20-ordenes.sql
+productos
+5
+Tables_in_freshbox
+ordenes
+productos
+[1;34m[23:21:48][0m Base de datos lista (productos + ordenes + usuario alumno)

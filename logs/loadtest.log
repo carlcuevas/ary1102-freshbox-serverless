@@ -1,0 +1,42 @@
+[1;34m[00:26:54][0m 1) Carga sobre get-products (6 generadores x 240 s) y seguimiento del HPA
+pod/load-gen created
+--- t=30s
+get-products-hpa   Deployment/get-products   cpu: 154%/50%   1     3     1     24m
+--- t=60s
+get-products-hpa   Deployment/get-products   cpu: 428%/50%   1     3     3     25m
+--- t=90s
+get-products-hpa   Deployment/get-products   cpu: 412%/50%   1     3     3     25m
+--- t=120s
+get-products-hpa   Deployment/get-products   cpu: 434%/50%   1     3     3     26m
+--- t=150s
+get-products-hpa   Deployment/get-products   cpu: 427%/50%   1     3     3     26m
+--- t=180s
+get-products-hpa   Deployment/get-products   cpu: 435%/50%   1     3     3     27m
+--- t=210s
+get-products-hpa   Deployment/get-products   cpu: 424%/50%   1     3     3     27m
+--- t=240s
+get-products-hpa   Deployment/get-products   cpu: 433%/50%   1     3     3     28m
+--- t=270s
+get-products-hpa   Deployment/get-products   cpu: 44%/50%   1     3     3     28m
+NAME                            READY   STATUS    RESTARTS   AGE
+get-products-7865bcd5b5-7vhmq   1/1     Running   0          28m
+get-products-7865bcd5b5-b47sc   1/1     Running   0          4m17s
+get-products-7865bcd5b5-ckqvz   1/1     Running   0          4m17s
+[1;34m[00:31:36][0m 2) Cold start de Lambda Cart (se fuerza un entorno nuevo cambiando una variable)
+  llamada 1: 1.093738s
+  llamada 2: 0.093270s
+  llamada 3: 0.057310s
+[1;34m[00:31:46][0m 3) Concurrencia: 60 solicitudes con 30 en paralelo a /api/cart
+      1 200 1.486429
+      1 200 1.347227
+      1 200 1.289912
+      1 200 1.244640
+      1 200 1.187335
+[1;34m[00:32:08][0m Evidencia en CloudWatch Logs (Init Duration = cold start)
+REPORT RequestId: c99a1b1c-d60e-4d52-9e59-32aad4dffe6fDuration: 497.65 msBilled Duration: 900 msMemory Size: 256 MBMax Memory Used: 87 MBInit Duration: 401.95 ms
+REPORT RequestId: 6cb751c2-d7ee-430f-967a-2c2e0a5d4a90Duration: 6.41 msBilled Duration: 432 msMemory Size: 256 MBMax Memory Used: 83 MBInit Duration: 424.86 ms
+REPORT RequestId: c827bdc8-cb78-434e-a4b9-cc5e1ea4bf65Duration: 492.63 msBilled Duration: 889 msMemory Size: 256 MBMax Memory Used: 87 MBInit Duration: 396.17 ms
+
+None
+2026-11-24T00:24:00+00:00	1.0
+2026-11-24T00:31:00+00:00	17.0

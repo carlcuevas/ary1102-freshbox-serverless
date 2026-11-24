@@ -1,0 +1,9 @@
+[1;34m[00:18:39][0m Importando API
+  [1;32m[ok][0m API 8wwgvuu2i8
+[1;34m[00:18:42][0m Permisos API Gateway -> Lambda
+  [1;32m[ok][0m freshbox-cart
+  [1;32m[ok][0m freshbox-create-order
+[1;34m[00:18:46][0m Deploy stage prod
+  [1;32m[ok][0m https://8wwgvuu2i8.execute-api.us-east-1.amazonaws.com/prod
+  GET /api/products -> 200
+  GET /api/cart?userId=test123 -> 200

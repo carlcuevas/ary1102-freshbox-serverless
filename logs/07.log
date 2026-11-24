@@ -1,0 +1,30 @@
+  [1;32m[ok][0m ConfigMap app-config y Secret app-db (usuario sin DROP)
+  [1;32m[ok][0m get-products:3001
+  [1;32m[ok][0m create-product:3002
+  [1;32m[ok][0m update-product:3003
+  [1;32m[ok][0m delete-product:3004
+Waiting for deployment "get-products" rollout to finish: 0 of 1 updated replicas are available...
+deployment "get-products" successfully rolled out
+Waiting for deployment "create-product" rollout to finish: 0 of 1 updated replicas are available...
+deployment "create-product" successfully rolled out
+Waiting for deployment "update-product" rollout to finish: 0 of 1 updated replicas are available...
+deployment "update-product" successfully rolled out
+deployment "delete-product" successfully rolled out
+[1;34m[00:03:08][0m Esperando el ALB (2-4 min)
+  [1;32m[ok][0m ALB freshbox-eks-alb-309827020.us-east-1.elb.amazonaws.com
+[1;34m[00:03:09][0m Esperando targets healthy
+  target groups: 4, no healthy: 0
+  GET /api/products -> 200
+  POST sin cuerpo (debe llegar a create-product: 400) -> 400
+NAME                                  READY   STATUS      RESTARTS   AGE
+pod/create-product-6798bb5969-6b6vz   1/1     Running     0          2m13s
+pod/db-init-fmhff                     0/1     Completed   0          43m
+pod/delete-product-799ccbb757-qf8cp   1/1     Running     0          2m9s
+pod/get-products-7865bcd5b5-7vhmq     1/1     Running     0          2m15s
+pod/update-product-b755fb577-rcf88    1/1     Running     0          2m11s
+
+NAME                                                     REFERENCE                   TARGETS       MINPODS   MAXPODS   REPLICAS   AGE
+horizontalpodautoscaler.autoscaling/create-product-hpa   Deployment/create-product   cpu: 2%/50%   1         3         1          2m13s
+horizontalpodautoscaler.autoscaling/delete-product-hpa   Deployment/delete-product   cpu: 2%/50%   1         3         1          2m9s
+horizontalpodautoscaler.autoscaling/get-products-hpa     Deployment/get-products     cpu: 2%/50%   1         3         1          2m15s
+horizontalpodautoscaler.autoscaling/update-product-hpa   Deployment/update-product   cpu: 2%/50%   1         3         1          2m11s

@@ -1,0 +1,6 @@
+[1;34m[00:09:14][0m DynamoDB carrito-freshbox (on-demand, TTL en expiresAt)
+  [1;32m[ok][0m TTL: ENABLED
+[1;34m[00:09:38][0m SQS: cola de ordenes + DLQ (3 intentos)
+  [1;32m[ok][0m https://sqs.us-east-1.amazonaws.com/334767299218/freshbox-ordenes
+[1;34m[00:09:42][0m VPC Endpoint Gateway para DynamoDB (rutas de la capa de aplicacion)
+  [1;32m[ok][0m vpce-006ddc76e3597258e

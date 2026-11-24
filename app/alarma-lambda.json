@@ -1,0 +1,6 @@
+[
+ {"Id":"total","Expression":"SUM(METRICS())","Label":"Errores Lambda (total)","ReturnData":true},
+ {"Id":"m1","MetricStat":{"Metric":{"Namespace":"AWS/Lambda","MetricName":"Errors","Dimensions":[{"Name":"FunctionName","Value":"freshbox-cart"}]},"Period":60,"Stat":"Sum"},"ReturnData":false},
+ {"Id":"m2","MetricStat":{"Metric":{"Namespace":"AWS/Lambda","MetricName":"Errors","Dimensions":[{"Name":"FunctionName","Value":"freshbox-create-order"}]},"Period":60,"Stat":"Sum"},"ReturnData":false},
+ {"Id":"m3","MetricStat":{"Metric":{"Namespace":"AWS/Lambda","MetricName":"Errors","Dimensions":[{"Name":"FunctionName","Value":"freshbox-process-order"}]},"Period":60,"Stat":"Sum"},"ReturnData":false}
+]

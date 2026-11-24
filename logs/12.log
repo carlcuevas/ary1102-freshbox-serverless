@@ -1,0 +1,28 @@
+[1;34m[04:16:00][0m Datos de los recursos
+  [1;32m[ok][0m ALB app/freshbox-eks-alb/e2e73e1ab526199f | API freshbox-api (8wwgvuu2i8)
+[1;34m[04:16:02][0m Dashboard freshbox-ep3
+  [1;32m[ok][0m https://us-east-1.console.aws.amazon.com/cloudwatch/home?region=us-east-1#dashboards/dashboard/freshbox-ep3
+[1;34m[04:16:03][0m SNS para las alarmas
+  [1;32m[ok][0m Suscripcion enviada a carl.cuevasn@duocuc.cl (confirma el correo que te llega de AWS)
+[1;34m[04:16:05][0m Alarmas
+  [1;32m[ok][0m freshbox-dlq-no-vacia
+  [1;32m[ok][0m freshbox-lambda-errores
+  [1;32m[ok][0m freshbox-apigw-5xx
+  [1;32m[ok][0m freshbox-hpa-get-products-al-maximo
+[1;34m[04:16:08][0m Retencion de logs a 14 dias (los grupos nuevos nunca expiran por defecto)
+  [1;32m[ok][0m /aws/lambda/freshbox-cart
+  [1;32m[ok][0m /aws/lambda/freshbox-create-order
+  [1;32m[ok][0m /aws/lambda/freshbox-process-order
+  [1;32m[ok][0m /aws/containerinsights/freshbox-cluster/application
+  [1;32m[ok][0m /aws/containerinsights/freshbox-cluster/dataplane
+  [1;32m[ok][0m /aws/containerinsights/freshbox-cluster/host
+  [1;32m[ok][0m /aws/containerinsights/freshbox-cluster/performance
+[1;34m[04:16:15][0m Estado de las alarmas
+--------------------------------------------------------------
+|                       DescribeAlarms                       |
++--------------------------------------+---------------------+
+|  freshbox-apigw-5xx                  |  INSUFFICIENT_DATA  |
+|  freshbox-dlq-no-vacia               |  OK                 |
+|  freshbox-hpa-get-products-al-maximo |  INSUFFICIENT_DATA  |
+|  freshbox-lambda-errores             |  INSUFFICIENT_DATA  |
++--------------------------------------+---------------------+

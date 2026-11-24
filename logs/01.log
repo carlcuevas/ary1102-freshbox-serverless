@@ -1,0 +1,23 @@
+[1;34m[21:31:41][0m AZ: us-east-1a / us-east-1b
+[1;34m[21:31:41][0m VPC
+  [1;32m[ok][0m vpc-02bbc2cb354251b5d
+[1;34m[21:31:45][0m Subredes
+  [1;32m[ok][0m freshbox-pub-a subnet-0089ca28571fe46fe
+  [1;32m[ok][0m freshbox-pub-b subnet-0362e43a5eb8b407b
+  [1;32m[ok][0m freshbox-app-a subnet-0c45706c365d92523
+  [1;32m[ok][0m freshbox-app-b subnet-0251eb765b4644294
+  [1;32m[ok][0m freshbox-data-a subnet-039c1d7fd3b6ce878
+  [1;32m[ok][0m freshbox-data-b subnet-03c86fed84ba70bef
+[1;34m[21:31:52][0m Internet Gateway
+  [1;32m[ok][0m igw-039b1949dfd75737a
+[1;34m[21:31:54][0m NAT Gateway (unico, en pub-a)
+  [1;32m[ok][0m nat-022a1d56ce6bfcf15 disponible
+[1;34m[21:34:00][0m Tablas de ruta
+  [1;32m[ok][0m public=rtb-0c87c54f59cef81bb app=rtb-0b0851798f29aaa3c data=rtb-0617f394dcc84077a (datos sin ruta a Internet)
+[1;34m[21:34:13][0m Security Groups
+  [1;32m[ok][0m freshbox-sg-alb sg-0777d8af8290fba79
+  [1;32m[ok][0m freshbox-sg-eks sg-0320a15306b38669e
+  [1;32m[ok][0m freshbox-sg-lambda sg-0073015e957d62261
+  [1;32m[ok][0m freshbox-sg-rds sg-0a7be5567a1eeb34a
+  [1;32m[ok][0m Reglas: ALB 80/443 <- Internet | EKS 3001-3004 <- ALB | RDS 3306 <- EKS y Lambda
+[1;34m[21:34:25][0m Red lista

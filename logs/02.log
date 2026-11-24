@@ -1,0 +1,4 @@
+[1;34m[21:34:42][0m Credenciales generadas en .secrets.env (no se versiona)
+  [1;32m[ok][0m DB subnet group
+[1;34m[21:34:46][0m Creando freshbox-rds (MySQL 8.0.46-rds.20260908, db.t4g.small, Multi-AZ, gp3 20GB cifrado, backups 7 dias)
+  [1;32m[ok][0m Creacion iniciada. Continua con 03-eks.sh

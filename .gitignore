@@ -1,0 +1,4 @@
+state.env
+.secrets.env
+*.zip
+node_modules/

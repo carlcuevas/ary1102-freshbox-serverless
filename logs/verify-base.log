@@ -1,0 +1,26 @@
+[1;34m[23:39:15][0m Red y Security Groups
+  [1;32m[ok][0m VPC 10.0.0.0/22
+  [1;32m[ok][0m 6 subredes
+  [1;32m[ok][0m NAT Gateway available
+  [1;32m[ok][0m SG-RDS 3306 solo desde EKS+Lambda
+[1;34m[23:39:19][0m EKS
+  [1;32m[ok][0m cluster ACTIVE
+  [1;32m[ok][0m nodos Ready >= 2
+  [1;32m[ok][0m nodos en 2 AZ
+  [1;32m[ok][0m nodos arm64 (Graviton)
+  [1;32m[ok][0m volumenes EBS de nodos cifrados
+  [1;32m[ok][0m add-on metrics-server ACTIVE
+  [1;32m[ok][0m add-on CloudWatch Observability
+  [1;32m[ok][0m AWS LB Controller disponible
+  [1;32m[ok][0m Cluster Autoscaler corriendo
+  [1;32m[ok][0m kubectl top nodes (metrics-server)
+[1;34m[23:39:30][0m RDS
+  [1;32m[ok][0m clase db.t4g.small
+  [1;32m[ok][0m Multi-AZ
+  [1;32m[ok][0m cifrada
+  [1;32m[ok][0m sin acceso publico
+  [1;32m[ok][0m backups 7 dias
+  [1;32m[ok][0m estado available
+  [1;32m[ok][0m Job db-init completado
+
+[1;32mTODO OK[0m

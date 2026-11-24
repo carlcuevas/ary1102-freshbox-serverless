@@ -1,0 +1,10 @@
+[1;34m[23:10:42][0m Add-ons gestionados
+  [1;32m[ok][0m add-on metrics-server
+  [1;32m[ok][0m add-on amazon-cloudwatch-observability
+[1;34m[23:12:09][0m AWS Load Balancer Controller (credenciales via rol del nodo = LabRole)
+Waiting for deployment "aws-load-balancer-controller" rollout to finish: 0 of 1 updated replicas are available...
+deployment "aws-load-balancer-controller" successfully rolled out
+[1;34m[23:12:31][0m Cluster Autoscaler
+Waiting for deployment "cluster-autoscaler-aws-cluster-autoscaler" rollout to finish: 0 of 1 updated replicas are available...
+deployment "cluster-autoscaler-aws-cluster-autoscaler" successfully rolled out
+[1;34m[23:12:36][0m Add-ons listos
