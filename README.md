@@ -111,7 +111,7 @@ for s in 06 07 08 09 10 11 12; do ./scripts/$s-*.sh 2>&1 | tee logs/$s.log; done
 | | `10-apigw.sh` | API REST, CORS, stage `prod` | — |
 | | `11-frontend.sh` | Publica el sitio en S3 | — |
 | | `12-monitoring.sh` | Dashboard, alarmas, SNS, retención de logs | — |
-| **Operación** | `verify.sh` | Prueba de extremo a extremo (35 checks) | 2 min |
+| **Operación** | `verify.sh` | Prueba de extremo a extremo (35 checks) | — |
 | | `loadtest.sh` | Carga para HPA, concurrencia y cold start | — |
 | | `nodes.sh pause\|resume` | Apaga o enciende los nodos entre sesiones | — |
 | | `backup.sh` | Respaldo del proyecto | — |
