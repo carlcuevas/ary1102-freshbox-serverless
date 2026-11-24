@@ -90,13 +90,25 @@ flowchart LR
 
 Todo se crea con scripts **idempotentes** desde **CloudShell** en un AWS Academy Learner Lab (`us-east-1`, rol `LabRole`). Cada script guarda sus IDs en `state.env` y las credenciales de BD en `.secrets.env` (ambos **fuera** del repositorio).
 
+**Levantar todo con un solo comando** (laboratorio nuevo, desde CloudShell):
+
 ```bash
-git clone https://github.com/carlcuevas/ary1102-freshbox-serverless.git
-cd ary1102-freshbox-serverless
-for s in 00 01 02 03 04 05; do ./scripts/$s-*.sh 2>&1 | tee logs/$s.log; done   # base (equivale al EP2)
-for s in 06 07 08 09 10 11 12; do ./scripts/$s-*.sh 2>&1 | tee logs/$s.log; done # EP3
-./scripts/verify.sh        # debe terminar en TODO OK
+git clone https://github.com/carlcuevas/ary1102-freshbox-serverless.git && cd ary1102-freshbox-serverless && ALARM_EMAIL=tu@correo.cl ./up.sh
 ```
+
+`up.sh` ejecuta los scripts 00 a 12 en orden, guarda cada salida en `logs/` y termina con `verify.sh` (debe decir **TODO OK**). Si se corta, vuelve a correr `./up.sh`: continúa desde el paso que falló.
+
+| Comando | Para qué |
+|---|---|
+| `./up.sh` | Despliega todo desde cero (la primera vez toma 45 a 60 min) |
+| `./up.sh resume` | Despierta un laboratorio ya desplegado: nodos, trigger SQS y targets del ALB, y verifica (~5 min) |
+| `./up.sh verify` | Solo las 35 comprobaciones de extremo a extremo |
+| `./up.sh status` | Nodos, pods, HPA y estado del trigger SQS |
+| `./up.sh pause` | Baja los nodos a 0 para ahorrar presupuesto |
+
+Variables opcionales: `ALARM_EMAIL` (correo para las alarmas; hay que confirmar la suscripción SNS desde el correo), `FORCE=1` (repite pasos ya hechos) y `DRY_RUN=1` (solo lista los pasos).
+
+Detalle paso a paso, si prefieres correr cada script por separado:
 
 | Fase | Script | Qué hace | Tiempo aprox. |
 |---|---|---|---|
@@ -118,7 +130,7 @@ for s in 06 07 08 09 10 11 12; do ./scripts/$s-*.sh 2>&1 | tee logs/$s.log; done
 | | `nodes.sh pause\|resume` | Apaga o enciende los nodos entre sesiones | — |
 | | `backup.sh` | Respaldo del proyecto | — |
 
-> Tras pausar el laboratorio: `./scripts/nodes.sh resume`, esperar ~2 min a que los *targets* del ALB queden sanos y volver a correr `verify.sh`.
+> Tras pausar el laboratorio, basta con `./up.sh resume`: enciende los nodos, habilita el trigger SQS, espera los targets del ALB y corre `verify.sh`.
 
 ## Estructura del repositorio
 
