@@ -1,6 +1,6 @@
 <div align="center">
 
-# 🥬 FreshBox SpA — Arquitectura híbrida EKS + Serverless
+# FreshBox SpA: arquitectura híbrida EKS + Serverless
 
 **De un catálogo en Kubernetes a una plataforma e-commerce con carrito y órdenes desacopladas, desplegada como código en AWS.**
 
@@ -10,16 +10,18 @@
 ![IaC](https://img.shields.io/badge/IaC-AWS_CLI_·_kubectl_·_Helm-1F6B45)
 ![Verificación](https://img.shields.io/badge/verify.sh-35%2F35_OK-2EA44F)
 
+Este repositorio contiene la infraestructura como código, el código de las aplicaciones y la evidencia de FreshBox SpA, un e-commerce de productos orgánicos desplegado en AWS. Combina microservicios en Kubernetes (EKS) para el catálogo con funciones Lambda, API Gateway, DynamoDB y SQS para el carrito y las órdenes.
+
 *Evaluación Parcial N°3 · ARY1102 Arquitectura Cloud · Duoc UC*
 *Carlos Rodrigo Cuevas Núñez · Docente: Rodrigo Horacio Aguilar González*
 
-[📄 Informe técnico (PDF)](docs/Informe_Tecnico_EP3.pdf) · [🏗️ Diagrama TO-BE](docs/arquitectura-to-be.png) · [🚀 Cómo reproducirlo](#-cómo-reproducirlo) · [🧪 Evidencia](#-evidencia)
+[Informe técnico (PDF)](docs/Informe_Tecnico_EP3.pdf) · [Diagrama TO-BE](docs/arquitectura-to-be.png) · [Cómo reproducirlo](#cómo-reproducirlo) · [Evidencia](#evidencia)
 
 </div>
 
 ---
 
-## ⚡ En 30 segundos
+## En 30 segundos
 
 FreshBox tenía un catálogo de productos en **Amazon EKS** (EP2). La gerencia pidió vender: **carrito, cálculo del total y confirmación de órdenes**, sin disparar costos. La solución es un modelo **híbrido**:
 
@@ -31,7 +33,7 @@ FreshBox tenía un catálogo de productos en **Amazon EKS** (EP2). La gerencia p
 
 > **Regla de diseño:** EKS donde hay estado relacional y tráfico constante; serverless donde hay ráfagas, datos efímeros o trabajo asíncrono.
 
-## 🏗️ Arquitectura TO-BE
+## Arquitectura TO-BE
 
 ![Arquitectura TO-BE híbrida](docs/arquitectura-to-be.png)
 
@@ -57,7 +59,7 @@ flowchart LR
   end
 ```
 
-## 🧩 Qué hace cada pieza
+## Qué hace cada pieza
 
 | Capa | Servicio | Responsabilidad |
 |---|---|---|
@@ -70,7 +72,7 @@ flowchart LR
 | Red | VPC `/22`, 6 subredes, 1 NAT, 4 Security Groups | Segmentación por capas · **VPC Endpoint** (gateway) a DynamoDB |
 | Observabilidad | **CloudWatch** + SNS | Dashboard de 13 paneles y 4 alarmas con aviso por correo |
 
-## 📊 Resultados medidos
+## Resultados medidos
 
 | Qué | Resultado |
 |---|---|
@@ -84,7 +86,7 @@ flowchart LR
 
 > Los costos son estimaciones con precios de lista de `us-east-1`; los supuestos están en el [informe](docs/Informe_Tecnico_EP3.pdf).
 
-## 🚀 Cómo reproducirlo
+## Cómo reproducirlo
 
 Todo se crea con scripts **idempotentes** desde **CloudShell** en un AWS Academy Learner Lab (`us-east-1`, rol `LabRole`). Cada script guarda sus IDs en `state.env` y las credenciales de BD en `.secrets.env` (ambos **fuera** del repositorio).
 
@@ -116,9 +118,9 @@ for s in 06 07 08 09 10 11 12; do ./scripts/$s-*.sh 2>&1 | tee logs/$s.log; done
 | | `nodes.sh pause\|resume` | Apaga o enciende los nodos entre sesiones | — |
 | | `backup.sh` | Respaldo del proyecto | — |
 
-> 💡 Tras pausar el laboratorio: `./scripts/nodes.sh resume`, esperar ~2 min a que los *targets* del ALB queden sanos y volver a correr `verify.sh`.
+> Tras pausar el laboratorio: `./scripts/nodes.sh resume`, esperar ~2 min a que los *targets* del ALB queden sanos y volver a correr `verify.sh`.
 
-## 🗂️ Estructura del repositorio
+## Estructura del repositorio
 
 ```text
 .
@@ -135,7 +137,7 @@ for s in 06 07 08 09 10 11 12; do ./scripts/$s-*.sh 2>&1 | tee logs/$s.log; done
 └── config.env          # Configuración central (sin secretos)
 ```
 
-## 🔐 Seguridad
+## Seguridad
 
 - **Security Groups encadenados:** ALB → nodos EKS → RDS; RDS solo acepta tráfico desde EKS y Lambda.
 - **Cifrado en reposo:** volúmenes EBS, RDS y SQS (SSE-SQS).
@@ -143,7 +145,7 @@ for s in 06 07 08 09 10 11 12; do ./scripts/$s-*.sh 2>&1 | tee logs/$s.log; done
 - **Usuario de aplicación sin `DROP`**; credenciales fuera del repositorio.
 - **Brechas reconocidas** (detalladas en el informe): tráfico HTTP, API sin autenticación ni WAF, `LabRole` compartido por las tres Lambdas (en el Learner Lab no se pueden crear roles; el diseño de mínimo privilegio está en el Anexo A), un solo NAT y EKS 1.34 con soporte estándar hasta el 2 de diciembre de 2026.
 
-## 🧪 Evidencia
+## Evidencia
 
 <table>
 <tr>
@@ -162,7 +164,7 @@ for s in 06 07 08 09 10 11 12; do ./scripts/$s-*.sh 2>&1 | tee logs/$s.log; done
 
 Más: [cold start en Logs Insights](docs/evidencia/logs-insights-cold-start.jpg) · [HPA de get-products](docs/evidencia/hpa-get-products.png) · [concurrencia de Lambda](docs/evidencia/lambda-concurrencia.png) · salida de cada ejecución en [`logs/`](logs).
 
-## 🔧 Cambios respecto del paquete del docente
+## Cambios respecto del paquete del docente
 
 - Node.js 20 en las funciones y microservicios.
 - Carrito **acumulativo** (agregar suma cantidades).
