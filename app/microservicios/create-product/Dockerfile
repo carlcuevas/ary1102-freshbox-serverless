@@ -1,6 +1,7 @@
 FROM node:20-alpine
 WORKDIR /app
-COPY package.json index.js ./
-COPY node_modules ./node_modules
+COPY package.json package-lock.json ./
+RUN npm ci --omit=dev
+COPY index.js ./
 EXPOSE 3002
 CMD ["node", "index.js"]
