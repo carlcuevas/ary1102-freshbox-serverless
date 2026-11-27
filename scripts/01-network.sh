@@ -60,8 +60,13 @@ ok "public=$RT_PUB app=$RT_APP data=$RT_DATA (datos sin ruta a Internet)"
 log "Security Groups"
 mk_sg() { # VAR nombre descripcion
   [ -n "${!1:-}" ] && { ok "$2 ya existe"; return; }
-  save_state "$1" "$(aws ec2 create-security-group --group-name "$2" --description "$3" --vpc-id "$VPC_ID" --tag-specifications "$(tags security-group "$2")" --query GroupId --output text)"
-  ok "$2 ${!1}"
+  local id
+  id=$(aws ec2 describe-security-groups --filters Name=group-name,Values="$2" Name=vpc-id,Values="$VPC_ID" --query 'SecurityGroups[0].GroupId' --output text 2>/dev/null)
+  if [ -z "$id" ] || [ "$id" = None ]; then
+    id=$(aws ec2 create-security-group --group-name "$2" --description "$3" --vpc-id "$VPC_ID" --tag-specifications "$(tags security-group "$2")" --query GroupId --output text)
+  fi
+  save_state "$1" "$id"
+  ok "$2 $id"
 }
 mk_sg SG_ALB    freshbox-sg-alb    "ALB publico"
 mk_sg SG_EKS    freshbox-sg-eks    "Nodos EKS (capa app)"
