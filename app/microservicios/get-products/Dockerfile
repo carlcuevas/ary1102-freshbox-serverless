@@ -1,7 +1,7 @@
-FROM node:20-alpine
+ARG BASE=public.ecr.aws/docker/library/node:20-alpine
+FROM ${BASE}
 WORKDIR /app
-COPY package.json package-lock.json ./
-RUN npm ci --omit=dev
-COPY index.js ./
+COPY package.json index.js ./
+COPY node_modules ./node_modules
 EXPOSE 3001
 CMD ["node", "index.js"]

@@ -143,8 +143,8 @@ Detalle paso a paso, si prefieres correr cada script por separado:
 │   └── frontend/       # Sitio estático que se publica en S3
 ├── k8s/                # Job de inicialización de BD, plantilla de servicios y Ingress
 ├── sql/                # Esquema y datos: productos y órdenes
-├── build/              # Artefactos de despliegue (OpenAPI, política, empaquetado)
-├── logs/               # Salida real de cada script y de las verificaciones
+├── build/              # (se genera al desplegar, no se versiona) OpenAPI, política y paquetes
+├── logs/               # (se genera al desplegar, no se versiona) salida de cada script
 ├── docs/               # Informe técnico, diagrama TO-BE y capturas de evidencia
 └── config.env          # Configuración central (sin secretos)
 ```
@@ -174,7 +174,7 @@ Detalle paso a paso, si prefieres correr cada script por separado:
 </tr>
 </table>
 
-Más: [cold start en Logs Insights](docs/evidencia/logs-insights-cold-start.jpg) · [HPA de get-products](docs/evidencia/hpa-get-products.png) · [concurrencia de Lambda](docs/evidencia/lambda-concurrencia.png) · salida de cada ejecución en [`logs/`](logs).
+Más: [cold start en Logs Insights](docs/evidencia/logs-insights-cold-start.jpg) · [HPA de get-products](docs/evidencia/hpa-get-products.png) · [concurrencia de Lambda](docs/evidencia/lambda-concurrencia.png) · salida de cada ejecución en [`docs/evidencia/logs-despliegue/`](docs/evidencia/logs-despliegue).
 
 ## Cambios respecto del paquete del docente
 

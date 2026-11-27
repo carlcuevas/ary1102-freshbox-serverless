@@ -2,4 +2,7 @@ state.env
 .secrets.env
 *.zip
 node_modules/
-logs/.ok-*
+build/
+logs/
+up.log
+state.queue.json

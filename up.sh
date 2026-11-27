@@ -17,7 +17,7 @@ bad() { printf '  \033[1;31m[xx]\033[0m %s\n' "$*"; }
 # Sin argumentos: lanza el despliegue en segundo plano (sobrevive si se cierra la pestana) y muestra el avance.
 if [ $# -eq 0 ] && [ -z "${UP_CHILD:-}" ] && [ "${DRY_RUN:-0}" != 1 ]; then
   if pgrep -f "[u]p.sh" | grep -qv "^$$\$"; then c "Ya hay un despliegue en curso, mostrando avance (Ctrl+C solo sale de la vista)"
-  else UP_CHILD=1 nohup "$0" > up.log 2>&1 & sleep 1; c "Despliegue lanzado en segundo plano (Ctrl+C solo sale de la vista)"; fi
+  else UP_CHILD=1 nohup "$PWD/up.sh" > up.log 2>&1 & sleep 1; c "Despliegue lanzado en segundo plano (Ctrl+C solo sale de la vista)"; fi
   touch up.log; exec tail -n +1 -f up.log
 fi
 
