@@ -6,7 +6,11 @@ ARCH=$(uname -m); case "$ARCH" in x86_64) A=amd64;; aarch64) A=arm64;; *) die "A
 
 log "Herramientas"
 for t in aws jq openssl curl; do have $t && ok "$t" || die "Falta $t"; done
-if ! have envsubst; then warn "Falta envsubst: sudo dnf install -y gettext (o apt install gettext-base)"; die "envsubst requerido"; fi
+if ! have envsubst; then
+  warn "Falta envsubst: intentando instalar gettext"
+  (sudo dnf install -y gettext >/dev/null 2>&1 || sudo yum install -y gettext >/dev/null 2>&1 || sudo apt-get install -y gettext-base >/dev/null 2>&1) || true
+  have envsubst || die "envsubst requerido: instala gettext (sudo dnf install -y gettext)"
+fi
 ok envsubst
 if ! have kubectl; then
   log "Instalando kubectl en ~/bin"
